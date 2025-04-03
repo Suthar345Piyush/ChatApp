@@ -1,15 +1,17 @@
-const  express = require("express");
+const express = require("express");
 const app = express()
-const dotenv = require("dotenv");
-  dotenv.config();
-const  mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
 
 const  PORT = process.env.PORT || 5002;
+const URI  = process.env.MONGODB_URI;
 
-
-app.get('/', (req, res) => {
-  res.send('Hello hey , are  you gay !')
-})
+try{
+  mongoose.connect(URI);
+  console.log("MongoDB connected");
+} catch(error){
+  console.log(error);
+}
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
