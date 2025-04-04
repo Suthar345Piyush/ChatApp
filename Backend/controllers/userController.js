@@ -1,4 +1,6 @@
+const createTokenAndSaveCookies = require("../jwt/generateTokens.js");
 const  User = require("../models/user.model.js");
+const bcrypt = require("bcryptjs");
 
 
 
@@ -31,17 +33,22 @@ const  signup = async (req , res) => {
        })
    };
 
+//Password hashing  
+const hashedPassword =  await bcrypt.hash(password , 10);
+
     const  newUser = await new User({
         name,
         email,
-        password,
+        password : hashedPassword,
     });
 
-    newUser.save().then(() => {
+   await newUser.save();
+   createTokenAndSaveCookies(newUser._id , res);
+   if(newUser) {
       res.status(201).json({
-         message : "User  created successfully",
+         message : "User  created successfully", newUser
       })
-  });
+   };
 
    } catch(error){
          console.log(error);
@@ -51,6 +58,9 @@ const  signup = async (req , res) => {
    };
 };
 
-module.exports = {signup};
 
+
+const login = async(req , res) => {
+
+}
 
