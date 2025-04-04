@@ -2,8 +2,8 @@ const  User = require("../models/user.model.js");
 
 
 
-const  signup = (req , res) => {
-   
+const  signup = async (req , res) => {
+
    try{
     const {name , email , password , confirmPassword} = req.body;
     if(password !== confirmPassword){
@@ -24,14 +24,14 @@ const  signup = (req , res) => {
          })
      };
  
-   const user  = User.findOne({email});
+   const user  = await User.findOne({email});
    if(user){
        return res.status(400).json({
           message : "User already exists",
        })
    };
 
-    const  newUser = new User({
+    const  newUser = await new User({
         name,
         email,
         password,
@@ -42,11 +42,6 @@ const  signup = (req , res) => {
          message : "User  created successfully",
       })
   });
-
-  res.status(500).json({
-     message : "Internal server error",
-  })
-
 
    } catch(error){
          console.log(error);
