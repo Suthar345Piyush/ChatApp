@@ -3,6 +3,7 @@ import Right from './home/right/right'
 import Left from './home/left/left'
 import Logout from './home/left1/logout'
 import Signup from './components/signup'
+import Login from './components/Login'
 
 const App = () => {
   return ( 
@@ -12,7 +13,8 @@ const App = () => {
     //    <Left></Left>
     //    <Right></Right>
     // </div> */}
-    <Signup />
+    {/* <Signup /> */}
+    <Login />
     </>
 
   )
