@@ -5,7 +5,7 @@ export default function Login() {
     <div>
     <form action="" className="items-center flex flex-col justify-center h-screen">
        <h1 className="text-xl font-bold mt-10">
-         Login into your {" "}
+         Login to your {" "}
          <span className="text-2xl font-bold text-green-500">Account</span>
        </h1>
        <h1 className="pb-2">Welcome Again!!!</h1>
