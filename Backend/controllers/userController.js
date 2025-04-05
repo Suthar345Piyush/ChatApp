@@ -2,9 +2,9 @@ const createTokenAndSaveCookies = require("../jwt/generateTokens.js");
 const  User = require("../models/user.model.js");
 const bcrypt = require("bcryptjs");
 
-const  signup = async (req , res) => {
-
-   try{
+module.exports = {
+   signup : async (req , res) => {
+ try{
     const {name , email , password , confirmPassword} = req.body;
     if(password !== confirmPassword){
      return res.status(400).json({
@@ -54,36 +54,33 @@ const hashedPassword =  await bcrypt.hash(password , 10);
              message : "Server error",
           })
    };
-};
+}}
 
 
-const login = async(req , res) => {
-      const  {email , password} = req.body;
-      try{
-         const user  = await User.findOne({email});
-         const isMatch = await bcrypt.compare(password , user.password);
-         if(!user || !isMatch){
-             return res.status(400).json({
-                message : "Invalid credentials"
+module.exports = { 
+    login : async(req , res) => {
+   const  {email , password} = req.body;
+   try{
+      const user  = await User.findOne({email});
+      const isMatch = await bcrypt.compare(password , user.password);
+      if(!user || !isMatch){
+          return res.status(400).json({
+             message : "Invalid credentials"
 ,             });
-         }
-         createTokenAndSaveCookies(user._id  , res);
-         res.status(200).json({
-             message : "User logged in successfully",
-             user : {
-                _id : user._id,
-                fullname : user.name,
-                email : user.email,
-             },
-         });
-   } catch(error){
-        console.log(error);
-         res.status(500).json({
-             message : "Internal Server error",
-         });
-   };
-
-
-
-
+      }
+      createTokenAndSaveCookies(user._id  , res);
+      res.status(200).json({
+          message : "User logged in successfully",
+          user : {
+             _id : user._id,
+             fullname : user.name,
+             email : user.email,
+          },
+      });
+} catch(error){
+     console.log(error);
+      res.status(500).json({
+          message : "Internal Server error",
+      });
+  }}
 }
