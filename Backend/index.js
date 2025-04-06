@@ -2,6 +2,7 @@ import express, { json } from "express";
 import dotenv from "dotenv";
 import { connect } from "mongoose";
 import userRoutes from "./routes/userRoutes.js";
+import cors from "cors";
 
 // Configure dotenv at the top of your file
 dotenv.config();
@@ -17,6 +18,12 @@ try {
 }
 
 const app = express();
+app.use(cors({
+  origin : "http://localhost:5001",
+  methods : ["GET" , "POST" , "PUT" , "PATCH" , "DELETE" , "OPTIONS"],
+  allowedHeaders : ["Content-Type" , "Authorization" , "X-Requested-With"],
+  credentials : true,
+}));
 app.use(json());
 app.use("/user", userRoutes);
 

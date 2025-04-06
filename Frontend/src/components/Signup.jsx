@@ -27,10 +27,10 @@ export  default function Signup() {
       .then((response) => {
          console.log(response.data);
       })
-      .catch((error) => {
-         console.log(error);
-      })
-  }
+      .catch((errors) => {
+         console.log(errors);
+      });
+  };
 
   return (
     <div>
