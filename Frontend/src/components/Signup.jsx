@@ -2,14 +2,11 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-
 export  default function Signup() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-
   const password = watch("password" , "");
   const  confirmPassword = watch("confirmPassword" , "");
-
 
  const  validatePasswordMatch = (value) => {
     return value === password || "Passwords do not match";
@@ -26,9 +23,15 @@ export  default function Signup() {
       axios.post("http://localhost:5001/user/signup" , userInfo)
       .then((response) => {
          console.log(response.data);
+          if(response.data){
+             alert("Signup successful! You can login now.");
+          }
+          localStorage.setItem("message" , JSON.stringify(response.data));
       })
       .catch((errors) => {
-         console.log(errors);
+          if(errors.response){
+             alert("Error: " + errors.response.data.errors);
+          }
       });
   };
 
