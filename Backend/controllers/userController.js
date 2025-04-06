@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 export const signup = async (req, res) => {
   try {
-    const { name, email, password, confirmPassword } = req.body;
+    const { fullname, email, password, confirmPassword } = req.body;
     if (password !== confirmPassword) {
       return res.status(400).json({
         message: "Password do not match",
@@ -34,17 +34,20 @@ export const signup = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await new User({
-      name,
+      fullname,
       email,
       password: hashedPassword,
     });
     await newUser.save();
-    createTokenAndSaveCookies(newUser._id, res);
-    
     if (newUser) {
+    createTokenAndSaveCookies(newUser._id, res);
       res.status(201).json({
         message: "User created successfully",
-        newUser
+        user : {
+           _id : newUser._id,
+           fullname : newUser.fullname,
+           email : newUser.email,
+        },
       });
     }
   } catch (error) {
@@ -75,12 +78,11 @@ export const login = async (req, res) => {
     }
     
     createTokenAndSaveCookies(user._id, res);
-    
     res.status(200).json({
       message: "User logged in successfully",
       user: {
         _id: user._id,
-        fullname: user.name,
+        fullname: user.fullname,
         email: user.email,
       },
     });

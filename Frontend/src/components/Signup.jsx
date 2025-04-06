@@ -51,7 +51,7 @@ export  default function Signup() {
   <label className="fieldset-label">Yourname</label>
   <input type="text" className="input" placeholder="Enter your fullname"   {...register("fullname" , {required : true})}/>
   {
-    errors.fullname && <span className="text-red-500 text-sm font-semibold">**This field is required**</span>
+    errors.fullname && (<span className="text-red-500 text-sm font-semibold">**This field is required**</span>)
   }
 
   {/* email */ }
@@ -60,7 +60,7 @@ export  default function Signup() {
   <input type="email" className="input" placeholder="Enter your email" 
     {...register("email" , {required : true})}/>
     {
-      errors.email && <span className="text-red-500 text-sm font-semibold">**This field is required**</span>
+      errors.email && (<span className="text-red-500 text-sm font-semibold">**This field is required**</span>)
     }
 
   {/* password */ }
@@ -68,7 +68,7 @@ export  default function Signup() {
   <label className="fieldset-label">Password</label>
   <input type="password" className="input" placeholder="Enter your Password"   {...register("password" , {required : true})}/>
   {
-    errors.password && <span className="text-red-500 text-sm font-semibold">**This field is required**</span>
+    errors.password && (<span className="text-red-500 text-sm font-semibold">**This field is required**</span>)
   }
 
   {/* confirmed Password */}
@@ -76,12 +76,12 @@ export  default function Signup() {
   <label className="fieldset-label">Confirmed Password</label>
   <input type="password" className="input" placeholder="Confirm your password"  {...register("confirmPassword"  , {required : true , validate : validatePasswordMatch})}/>
   {
-    errors.confirmPassword && <span className="text-red-500 text-sm font-semibold">{errors.confirmPassword.message}</span>
+    errors.confirmPassword && (<span className="text-red-500 text-sm font-semibold">{errors.confirmPassword.message}</span>)
   }
 
   {/* sign up button */}
 
-  <input type="submit"  value="Signup" className=" text-white text-xl bg-green-500 mt-3 rounded-lg cursor-pointer text-center"></input>
+  <input type="submit"  value="Signup" className=" text-white text-xl bg-green-500 mt-3 rounded-2xl cursor-pointer text-center"></input>
    </fieldset>
 
    {/* Text and buttons */}
