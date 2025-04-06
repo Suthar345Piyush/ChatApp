@@ -8,13 +8,13 @@ import Login from './components/Login'
 const App = () => {
   return ( 
     <>
-    {/* // <div className="flex h-screen">
-    //    <Logout></Logout>
-    //    <Left></Left>
-    //    <Right></Right>
-    // </div> */}
+     <div className="flex h-screen">
+       <Logout></Logout>
+       <Left></Left>
+       <Right></Right>
+     </div>
     {/* <Signup /> */}
-    <Login />
+    {/* <Login /> */}
     </>
 
   )
