@@ -12,7 +12,7 @@ export  default function Signup() {
     return value === password || "Passwords do not match";
  };
 
-  const onSubmit = data => {
+  const onSubmit = async (data) => {
       const  userInfo = {
          fullname: data.fullname,
          email : data.email,
@@ -20,7 +20,7 @@ export  default function Signup() {
          confirmPassword : data.confirmPassword,
       };
       //  console.log(userInfo);
-      axios.post("http://localhost:5001/user/signup" , userInfo)
+      await axios.post("http://localhost:5001/user/signup" , userInfo)
       .then((response) => {
          console.log(response.data);
           if(response.data){
