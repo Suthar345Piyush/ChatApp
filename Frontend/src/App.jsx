@@ -4,8 +4,11 @@ import Left from './home/left/left'
 import Logout from './home/left1/logout'
 import Signup from './components/signup'
 import Login from './components/Login'
+import {useAuth} from './context/AuthProvider';
 
 const App = () => {
+   const  [authUser  , setAuthUser] = useAuth();
+   console.log(authUser);
   return ( 
     <>
      {/* <div className="flex h-screen">

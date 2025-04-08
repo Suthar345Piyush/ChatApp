@@ -1,9 +1,13 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import useAuth from "../context/AuthProvider";
 
 export  default function Signup() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+   const  [authUser , setAuthUser] = useAuth();
+  const { 
+    register, handleSubmit, watch, formState: { errors },
+   } = useForm();
 
   const password = watch("password" , "");
   const  confirmPassword = watch("confirmPassword" , "");
@@ -27,6 +31,7 @@ export  default function Signup() {
              alert("Signup successful! You can login now.");
           }
           localStorage.setItem("message" , JSON.stringify(response.data));
+          setAuthUser(response.data);
       })
       .catch((errors) => {
           if(errors.response){
