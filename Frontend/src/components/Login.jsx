@@ -2,6 +2,7 @@ import React from 'react'
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import useAuth from "../context/AuthProvider";
+import { Link } from 'react-router-dom';
 
 export default function Login() {
    const [authUser , setAuthUser] = useAuth();
@@ -79,7 +80,7 @@ export default function Login() {
 
 <div className="flex flex-col items-center pt-2">
    <p className="items-center justify-center">Want to create a new Account? {" "}
-      <span className="underline text-green-500 cursor-pointer">Signup</span>
+      <Link  to={"/signup"}  className="underline text-green-500 cursor-pointer">Signup</Link>
         </p>  
       </div>
    </div>
