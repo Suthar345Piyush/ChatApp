@@ -12,10 +12,20 @@ const  secureRoute = async (req , res , next) => {
       if(!verified){
          return res.status(403).json({message : "Token expired"});
       }
-       const user = await User.findById(verified.userId).select("-password");
+      const user = await User.findById(verified.userId).select("-password");
+      if(!user){
+         return res.status(404).json({message : "User not found"});
+      }
+      req.user = user;
+      next();
    } catch(error){
      console.log(error);
      res.status(501).json({message : "Internal server error"});
    }
 };
+
+
+export default secureRoute;
+
+
 
