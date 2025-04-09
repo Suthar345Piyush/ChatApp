@@ -8,7 +8,7 @@ import { useAuth } from './context/AuthProvider';
 import {Routes , Route, Navigate} from 'react-router-dom';
 
 const App = () => {
-   const  [authUser  , setAuthUser] = useAuth();
+   const  { authUser  , setAuthUser } = useAuth();
    console.log(authUser);
   return ( 
 <>
@@ -23,8 +23,8 @@ const App = () => {
       ) : ( <Navigate to={"/login"} /> )
      }/>
 
-     <Route path="/login" element={authUser ? <Navigate to={"/"}/> : <Login />}/>
-     <Route path="/signup" element={authUser ? <Navigate to={"/"}/> : <Signup />}/>
+     <Route path="/login" element={authUser ? <Navigate to="/"/> : <Login />}/>
+     <Route path="/signup" element={authUser ? <Navigate to="/"/> : <Signup />}/>
   </Routes>
 </>
   );

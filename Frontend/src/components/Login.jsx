@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
 
 export default function Login() {
-   const [authUser , setAuthUser] = useAuth();
+   const {authUser , setAuthUser} = useAuth();
  
   const  {
      register,
@@ -70,7 +70,7 @@ export default function Login() {
 
 {/* Login button */}
 
-<input type="submit" value="Login" className="text-white bg-green-500 cursor-pointer text-center mt-3 rounded-2xl"></input>
+<input type="submit" value="Login" className="text-white bg-green-500 cursor-pointer text-center mt-3 rounded-2xl text-2xl"></input>
 
 </fieldset>
 

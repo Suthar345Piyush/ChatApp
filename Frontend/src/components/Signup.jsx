@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthProvider';
 import { Link } from 'react-router-dom';
 
 export  default function Signup() {
-   const  [authUser , setAuthUser] = useAuth();
+   const  { authUser , setAuthUser } = useAuth();
   const { 
     register, handleSubmit, watch, formState: { errors },
    } = useForm();
