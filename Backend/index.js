@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 // Configure dotenv at the top of your file
 dotenv.config();
 
-const PORT = process.env.PORT || 5002;
+const PORT = process.env.PORT || 5003;
 const URI = process.env.MONGODB_URI;
 
 try {
