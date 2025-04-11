@@ -6,13 +6,18 @@ import Signup from './components/signup'
 import Login from './components/Login'
 import { useAuth } from './context/AuthProvider';
 import {Routes , Route, Navigate} from 'react-router-dom';
+import Loading from './components/loading'
+
+
 
 const App = () => {
    const  { authUser  , setAuthUser } = useAuth();
    console.log(authUser);
   return ( 
 <>
-  <Routes>
+ {/* <Loading /> */}
+   
+    <Routes>
      <Route path="/" element={
         authUser ? (
         <div className="flex h-screen">
