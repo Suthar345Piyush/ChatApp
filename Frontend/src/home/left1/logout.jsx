@@ -9,7 +9,7 @@ export  default function  Logout(){
      setLoading(true);
       try{
          const  res = await axios.post("/api/user/logout");
-         localStorage.removeItem("messsge");
+         localStorage.removeItem("message");
          Cookies.remove("jwt");
          setLoading(false);
          alert("Logout Succussfully");
@@ -18,12 +18,10 @@ export  default function  Logout(){
       }
   };
 
-
-  
   return (
     <div className="w-[2%]  bg-green-700 text-white flex flex-col justify-end">
        <button className="cursor-pointer mb-3 hover:bg-gray-400 rounded-lg">
-         <CiLogout className="size-7"/>
+         <CiLogout className="size-7" onClick={handleLogout}/>
        </button>
     </div> 
   )

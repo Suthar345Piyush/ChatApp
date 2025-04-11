@@ -4,6 +4,7 @@ import { connect } from "mongoose";
 import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import messageRoute from "./routes/messageRoutes.js";
 
 // Configure dotenv at the top of your file
 dotenv.config();
@@ -28,6 +29,8 @@ app.use(cors({
 }));
 app.use(json());
 app.use("/api/user", userRoutes);
+app.use("/api/message" , messageRoute);
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
