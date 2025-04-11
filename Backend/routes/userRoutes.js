@@ -1,17 +1,20 @@
-import { Router } from "express";
-import { signup, login, logout, getUserProfile } from "../controllers/userController.js";
+import  express from "express";
+import {signup , login, logout, getUserProfile } from "../controllers/userController.js";
 import secureRoute from "../middleware/secureRoute.js";
 
 
-const router = Router();
+const  router = express.Router();
 
-router.post("/signup", signup);
-router.post("/login", login);
+router.post("/signup" , signup);
+router.post("/login" ,  login);
 router.post("/logout" , logout);
-router.get("/getUserProfile" , getUserProfile , secureRoute);
+router.get("/getUserProfile" , secureRoute ,  getUserProfile);
 
 
 export default router;
+
+
+
 
 
 

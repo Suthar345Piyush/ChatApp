@@ -1,6 +1,12 @@
 import React from 'react'
+import useGetAllUsers from '../../context/useGetAllUsers';
 
 function Users() {
+  const  [allUsers , loading] = useGetAllUsers;
+  console.log(allUsers);
+
+
+
   return (
   <div style={{maxHeight : "calc(92vh)"}} className="overflow-y-auto">
     <div className="flex space-x-4 px-2 py-2 hover:bg-gray-400 cursor-pointer">
@@ -74,16 +80,6 @@ function Users() {
          <span className="font-light">piyush6@dev</span>
       </div>
     </div>
-
-
-
-   
-
-   
-
-   
-
-   
   </div>
 
   )
