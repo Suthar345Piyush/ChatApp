@@ -2,7 +2,7 @@ import React from 'react'
 import useGetAllUsers from '../../context/useGetAllUsers';
 
 function Users() {
-  const  [allUsers , loading] = useGetAllUsers;
+  const  [allUsers , loading] = useGetAllUsers();
   console.log(allUsers);
 
 

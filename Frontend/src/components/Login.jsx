@@ -20,7 +20,7 @@ export default function Login() {
      };
 
 
-    await axios.post("http://localhost:5001/user/login" , userInfo)
+    await axios.post("/api/user/login" , userInfo)
      .then((response) => {
         if(response.data){
            alert("Login Successful");
