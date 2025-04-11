@@ -1,13 +1,17 @@
 import React from 'react'
 import useGetAllUsers from '../../context/useGetAllUsers';
+import useConversation from '../../states/useConverstion.js';
 
 function Users() {
   const  [allUsers , loading] = useGetAllUsers();
+  const  {selectedConversation , setSelectedConversation} = useConversation();
+  const  isSelected = selectedConversation?._id === Users._id;
   console.log(allUsers);
 
-
-
   return (
+    <div className={`hover:bg-slate-600 duration-300 ${
+       isSelected ? "bg-slate-700" : ""
+    }`} onClick={() => setSelectedConversation(Users)}>
   <div style={{maxHeight : "calc(92vh)"}} className="overflow-y-auto">
     <div className="flex space-x-4 px-2 py-2 hover:bg-gray-400 cursor-pointer">
       <div className="avatar avatar-online">
@@ -81,7 +85,7 @@ function Users() {
       </div>
     </div>
   </div>
-
+</div>
   )
 }
 
