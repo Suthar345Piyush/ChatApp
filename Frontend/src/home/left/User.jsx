@@ -1,6 +1,5 @@
 import React from 'react';
 import useConversation from '../../states/useConverstion.js';
-
 function User({user}) {
   const  {selectedConversation , setSelectedConversation} = useConversation();
   const  isSelected = selectedConversation?._id === user._id;
