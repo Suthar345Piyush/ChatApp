@@ -1,26 +1,28 @@
 import React from 'react';
-import Users from './Users';
-import useGetAllUsers from '../../context/useGetAllUsers';
+import useConversation from '../../states/useConverstion.js';
 
+function User({user}) {
+  const  {selectedConversation , setSelectedConversation} = useConversation();
+  const  isSelected = selectedConversation?._id === user._id;
+  const isOnline = onlineUsers.includes(user._id);
+  console.log(allUsers);
 
-function User(){
-    const  [allUsers  , loading] = useGetAllUsers();
+  return (
+     <div className={`hover:bg-slate-600 duration-300 ${ isSelected ? "bg-slate-700" : ""}`}  onClick={() => setSelectedConversation(user)}>
+       <div className="flex space-x-4 px-2 py-2 hover:bg-gray-400 cursor-pointer">
+         <div className={`avatar ${isOnline ? "online" : ""}`}>
+            <div className="w-13 rounded-full">
+              <img src="https://pbs.twimg.com/profile_images/1905153443184136192/NLepSlSF_400x400.jpg" />
+          </div>
+            </div>
+              <div>
+         <h1 className="font-medium">{user.name}</h1>
+         <span>{user.email}</span>
+      </div>
+    </div>
+  </div>
+  )
+}
 
-    console.log(allUsers);
+export default User;
 
-    return(
-       <div>
-         <h1 className="px-8 py-2 text-white font-semibold bg-slate-800 rounded-md">Messages</h1>
-         <div className="py-2 flex-1 overflow-y-auto" style={{maxHeight : "calc(84vh - 10vh"}}
-         >
-
-          {allUsers.map((user , index) => {
-           return <Users key={index} user={user} />
-          })}
-         </div>
-       </div>
-    )
-};
-
-
-export  default User;
