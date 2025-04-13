@@ -1,7 +1,7 @@
 import React from 'react'
 import ChatUser from './ChatUser';
 import Message from './Message';
-import MessageType from './MessageType';
+import Typesend from './Typesend';
 
 const Right = () => {
   return (
@@ -9,7 +9,7 @@ const Right = () => {
 
       <ChatUser/>
       <Message/>
-      <MessageType />
+      <Typesend />
     </div>
   )
 }

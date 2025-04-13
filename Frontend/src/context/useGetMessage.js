@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const useGetMessage = () => {
    const  [loading , setLoading] = useState(false);
-   const  {messages , setMessage , selectedConversation} = useConversation();
+   const  {messages , setMessage, selectedConversation} = useConversation();
 
    useEffect(() => {
       const  getMessages = async() => {
