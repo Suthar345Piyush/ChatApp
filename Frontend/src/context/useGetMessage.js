@@ -27,4 +27,5 @@ const useGetMessage = () => {
    return {loading , messages};
 };
 
-export default useGetMessage
+export default useGetMessage;
+

@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoSend } from "react-icons/io5";
 
-function MessageType() {
+function Typesend() {
   return (
     <div className="fixed bottom-0 left-[375px] right-0 flex space-x-2 p-2.5 bg-slate-600 z-10 rounded-4xl mr-5 mb-2">
       <div className="flex flex-1 items-center">
@@ -14,4 +14,4 @@ function MessageType() {
   )
 }
 
-export default MessageType
+export default Typesend;
