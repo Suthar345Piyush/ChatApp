@@ -5,7 +5,7 @@ import Loading from "../../components/Loading.jsx";
 
 function Message() {
   const {loading , messages} = useGetMessage();
-  console.log(messages)
+  // console.log(messages)
   return (
        <div className="flex-1 overflow-y-auto"   style={{minHeight : "calc(92vh- 8vh)"}}>
           {loading ? (

@@ -1,19 +1,22 @@
 import React from 'react'
 
 function Messages({message}) {
+  const authUser = JSON.parse(localStorage.getItem("message"));
+  const itsme = message.senderId === authUser._id;
+  const chatName = itsme ? "chat-end" : "chat-start";
+  const chatColor = itsme ? "bg-blue-400" : "";
+
   return (
-     <>
-       <div className="chat chat-start">
-         <div className="chat-bubble chat-bubble-accent">{message}</div>
+ <>
+   <div className="p-4">
+       <div className={`chat ${chatName}`}>
+         <div className={`chat-bubble text-white ${chatColor}`}>{message}</div>
        </div>
-
-
-       <div className="chat chat-end">
-         <div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
-       </div>
-     </>
-  )
+    </div>
+ </>
+  );
 }
 
-export default Messages
+export default Messages;
+
 
