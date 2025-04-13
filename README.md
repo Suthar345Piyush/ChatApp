@@ -1,1 +1,1 @@
-A  chat Application made  using MERN stack and socket io.
+A  chat Application built  using MERN stack and socket io.
