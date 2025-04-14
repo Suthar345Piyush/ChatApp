@@ -5,6 +5,7 @@ import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import messageRoute from "./routes/messageRoutes.js";
+import { app, server } from "./socketio/server.js";
 
 // Configure dotenv at the top of your file
 dotenv.config();
@@ -19,7 +20,7 @@ try {
   console.log(error);
 }
 
-const app = express();
+
 app.use(cookieParser());
 app.use(cors({
   origin : "http://localhost:5173",
@@ -32,7 +33,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/message" , messageRoute);
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 

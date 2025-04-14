@@ -21,7 +21,9 @@ function Message() {
              <Loading />
           ) : (
              messages.length > 0 && messages.map((message) => {
-                return  <Messages key={message._id} message={message}/>
+                 <div key={message._id} ref={lastMessageRef}>
+                   return  <Messages  message={message}/>
+                   </div>
              })
           )}
           {!loading && messages.length === 0 && (
