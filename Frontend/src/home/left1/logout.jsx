@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { CiLogout } from "react-icons/ci";
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import toast from 'react-hot-toast';
+
+
+
 
 export  default function  Logout(){
   const [loading , setLoading] = useState(false);
@@ -12,9 +16,10 @@ export  default function  Logout(){
          localStorage.removeItem("message");
          Cookies.remove("jwt");
          setLoading(false);
-         alert("Logout Succussfully");
+         toast.success("Logout Succussfully");
       } catch(error){
          console.log(error);
+         toast.error("Logout Failed");
       }
   };
 
