@@ -2,7 +2,7 @@ import React from 'react'
 
 function Messages({message}) {
   const authUser = JSON.parse(localStorage.getItem("message"));
-  const itsme = message.senderId === authUser._id;
+  const itsme = message.senderId === authUser.user._id;
   const chatName = itsme ? "chat-end" : "chat-start";
   const chatColor = itsme ? "bg-blue-400" : "";
 
