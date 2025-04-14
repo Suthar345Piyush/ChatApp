@@ -10,7 +10,7 @@ function Messages({message}) {
  <>
    <div className="p-4">
        <div className={`chat ${chatName}`}>
-         <div className={`chat-bubble text-white ${chatColor}`}>{message}</div>
+         <div className={`chat-bubble text-white ${chatColor}`}>{message.message}</div>
        </div>
     </div>
  </>
